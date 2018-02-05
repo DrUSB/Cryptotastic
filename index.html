@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang=en-US>
 <head>
-     <script type="text/javascript" src="tender.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <meta charset="utf-8">
+
     <title>CryptoTastic</title>
+
+    <! CSS editing> <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
-<body onload="myfunction()">
-    <h1>Welcome to CryptoTastic!</h1>
-    <h2>Overview</h2>
-    <p style="border:3px; border-style:solid; border-color:black; padding:1em;">Our website will offer you the ability to view cryptocurrency prices and there changes
-        aswell as allowing you to create the most flexible decriptive portfolio in the cryptocurrency space currently.
-    </p>
 
-   <table style="width:100%">
-       <tr>
-           <th>Coin</th>
-           <th>Price</th>
-           <th>Change(24)</th>
-           <th>Change(7 days)</th>
-       </tr>
-       <tr>
-           <!First Row>
-           <td>Bitcoin</td>
-           <td>(BITCOINS CURRENT PRICE)</td>
-           <td>(CHANGE IN % 24 HOURS)</td>
-           <td>(CHANGE IN % 7 DAYS</td>
-       </tr>
-       <tr>
-           <td>Ethereum</td>
-           <td>(Ethereum CURRENT PRICE)</td>
-           <td>(CHANGE IN % 24 HOURS)</td>
-           <td>(CHANGE IN % 7 DAYS</td>
-       </tr>
+<body>
+    <h1>
+        Welcome to Cryptotastic
+    </h1>
+        <table style="width:100%">
+                <tr>
+                    <td><b>Coin</b></td>
+                    <td><b>Price</b></td>
+               
+                </tr>
 
 
-<p id="test">lool</p>
+    <section>
+
+    </section>
+
+    <script>
+        var table = document.querySelector('table');
+        var section = document.querySelector('section');
+        var tr = document.querySelector('tr');
+
+        var requestURL = 'https://api.coinmarketcap.com/v1/ticker/';
+        var request = new XMLHttpRequest();
+        request.open('GET',requestURL);
+
+        request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            var prices = request.response;
+            showPrices(prices);
+        }
+
+        function showPrices(jsonObj){
+          
+            for(var j = 0;j<50;j++){
+                var row = document.createElement('tr');
+                var price = document.createElement('td');
+                var name = document.createElement('td');
+        
+
+                    name.textContent = jsonObj[j].name;
+                    price.textContent = jsonObj[j].price_usd;
+                    row.appendChild(name);
+                    row.appendChild(price);
+                    table.appendChild(row);
+
+                }
 
 
-   </table> 
+
+   
 
 
-<!Bitcoin>
-<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget"
- data-currency="bitcoin" data-base="USD" data-secondary="" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
-<!Ethereum>
-<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currency="ethereum" data-base="USD"
- data-secondary="" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
 
-<!Ripple>
-<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currency="ripple" data-base="USD"
- data-secondary="" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
+        }
+ 
+    </script>
 
 
-<br>
+
+
 
 
 
 </body>
-<footer> Copyright 2018 CryptoTastic</footer>
 
 </html>
-
