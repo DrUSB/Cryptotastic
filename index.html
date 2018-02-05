@@ -12,66 +12,21 @@
     <h1>
         Welcome to Cryptotastic
     </h1>
+ 
         <table style="width:100%">
                 <tr>
                     <td><b>Coin</b></td>
-                    <td><b>Price</b></td>
-               
+                    <td><b>Price(USD)</b></td>
+                    <td><b>Price Change 24h</b></td>
                 </tr>
 
-
+    
     <section>
 
     </section>
 
-    <script>
-        var table = document.querySelector('table');
-        var section = document.querySelector('section');
-        var tr = document.querySelector('tr');
 
-        var requestURL = 'https://api.coinmarketcap.com/v1/ticker/';
-        var request = new XMLHttpRequest();
-        request.open('GET',requestURL);
-
-        request.responseType = 'json';
-        request.send();
-        request.onload = function() {
-            var prices = request.response;
-            showPrices(prices);
-        }
-
-        function showPrices(jsonObj){
-          
-            for(var j = 0;j<50;j++){
-                var row = document.createElement('tr');
-                var price = document.createElement('td');
-                var name = document.createElement('td');
-        
-
-                    name.textContent = jsonObj[j].name;
-                    price.textContent = jsonObj[j].price_usd;
-                    row.appendChild(name);
-                    row.appendChild(price);
-                    table.appendChild(row);
-
-                }
-
-
-
-   
-
-
-
-        }
- 
-    </script>
-
-
-
-
-
-
-
+<script src="scripts.js"></script>
 </body>
 
 </html>
