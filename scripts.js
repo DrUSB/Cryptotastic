@@ -24,15 +24,18 @@
                 var price = document.createElement('td');
                 var name = document.createElement('td');
                 var pc24h = document.createElement('td');
+                var pc7d = document.createElement('td');
                
         
                     name.textContent = jsonObj[j].name;
                     price.textContent ='$' + jsonObj[j].price_usd;
                     pc24h.textContent = jsonObj[j].percent_change_24h + '%';
+                    pc7d.textContent = jsonObj[j].percent_change_7d + '%';
                     
                     row.appendChild(name);
                     row.appendChild(price);
                     row.appendChild(pc24h);
+                    row.appendChild(pc7d);
                     tablePrices.appendChild(row);
 
                 }
