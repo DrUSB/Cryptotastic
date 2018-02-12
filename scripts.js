@@ -25,13 +25,40 @@
                 var name = document.createElement('td');
                 var pc24h = document.createElement('td');
                 var pc7d = document.createElement('td');
-               
-        
+
+                    //If price in last hour has gone up its green if otherwise its red
                     name.textContent = jsonObj[j].name;
-                    price.textContent ='$' + jsonObj[j].price_usd;
+                        if(jsonObj[j].percent_change_1h >= 0){
+                            price.style.color = "green";
+                        }
+                        else{
+                            price.style.color = "red";
+                        }
+                        if(jsonObj[j].percent_change_24h >= 0){
+                            pc24h.style.color = "green";
+                        }
+                        else{
+                            pc24h.style.color = "red";
+                        }
+                        if(jsonObj[j].percent_change_7d >= 0){
+                            pc7d.style.color = "green";
+                        }
+                        else{
+                            pc7d.style.color = "red";
+                        }
+                        
+                    price.textContent = "$" + jsonObj[j].price_usd;
+
                     pc24h.textContent = jsonObj[j].percent_change_24h + '%';
-                    pc7d.textContent = jsonObj[j].percent_change_7d + '%';
-                    
+                        //Check if data is NULL which displays the coin is new.
+                        if(jsonObj[j].percent_change_7d == null){
+                            pc7d.textContent = "*New Coin";
+                            pc7d.style.color = "black";
+                        }
+                        else{
+                        pc7d.textContent = jsonObj[j].percent_change_7d + '%';
+                        }
+
                     row.appendChild(name);
                     row.appendChild(price);
                     row.appendChild(pc24h);
