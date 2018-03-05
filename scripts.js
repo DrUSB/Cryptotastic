@@ -19,7 +19,7 @@
      
         function showPrices(jsonObj){
           
-            for(var j = 0;j<50;j++){
+            for(var j = 0;j<40;j++){
                 var row = document.createElement('tr');
                 var img = document.createElement('img');
                 var price = document.createElement('td');
@@ -28,7 +28,8 @@
                 var pc7d = document.createElement('td');
 
                     //Prices change the colour of percetanges and prices. Green for >= 0 and red otherwise.
-                        img.src = "images/BTC.png";
+                        var imageName = "images/" + jsonObj[j].name + ".png";
+                        img.src = imageName;
                         name.textContent = jsonObj[j].name;
                         if(jsonObj[j].percent_change_1h >= 0){
                             price.style.color = "green";
@@ -77,11 +78,3 @@
 
         }
 
-        /*function showImages(imgs){
-            for (var i = 0; i < imgs.length; i++){
-                var img = document.createElement('img');
-                img.src = imgs[i];
-                container.appendChild(img);
-            }
-
-        }*/
