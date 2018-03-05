@@ -27,10 +27,13 @@
                 var pc24h = document.createElement('td');
                 var pc7d = document.createElement('td');
 
-                    //Prices change the colour of percetanges and prices. Green for >= 0 and red otherwise.
+                        /*Allocating images by fetching the name of the coin and concatinating a .png at the end
+                        in order to find the images already saved on the machine with the same names*/
                         var imageName = "images/" + jsonObj[j].name + ".png";
                         img.src = imageName;
                         name.textContent = jsonObj[j].name;
+                        //Prices change the colour of percetanges and prices. Green for >= 0 and red otherwise.
+
                         if(jsonObj[j].percent_change_1h >= 0){
                             price.style.color = "green";
                         }
