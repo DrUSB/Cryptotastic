@@ -1,24 +1,20 @@
         var tablePrices = document.querySelector('table');
         var section = document.querySelector('section');
         var tr = document.querySelector('tr');
-
-        var imgs = ['https://www.livecoinwatch.com/images/icons32/btc.png','https://www.livecoinwatch.com/images/icons32/eth.png'];
-        var container = document.getElementById('imageContainer');
-
+      
         var requestURL = 'https://api.coinmarketcap.com/v1/ticker/';
         var request = new XMLHttpRequest();
-  
+        
+       
         request.open('GET',requestURL,true);
-
+      
         request.responseType = 'json';
         request.send();
         request.onload = function() {
         var prices = request.response;
         showPrices(prices);
         }
-     
         function showPrices(jsonObj){
-          
             for(var j = 0;j<40;j++){
                 var row = document.createElement('tr');
                 var img = document.createElement('img');
@@ -64,6 +60,7 @@
                         else{
                         pc7d.textContent = jsonObj[j].percent_change_7d + '%';
                         }
+                        usdPrice = jsonObj[j].price_usd
                     row.appendChild(img);
                     row.appendChild(name);
                     row.appendChild(price);
@@ -73,11 +70,7 @@
 
                 }
 
-
-
-   
-
-
-
+                return usdPrice;
         }
-
+      
+     
